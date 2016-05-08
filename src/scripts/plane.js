@@ -8,6 +8,7 @@ export default class Plane {
             specular: 0xffffff,
             shininess: 30,
             shading: THREE.FlatShading,
+            side: THREE.DoubleSide,
             // wireframe: true,
         });
 
