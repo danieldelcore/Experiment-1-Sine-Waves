@@ -18,14 +18,13 @@ export default class Plane {
 
     update(timeStamp) {
         const center = new THREE.Vector2(0, 0);
-        // const center = this.mesh.geometry.vertices[0];
         const vCount = this.mesh.geometry.vertices.length;
 
         for (let i = 0; i < vCount; i++) {
             const v = this.mesh.geometry.vertices[i];
             const dist = new THREE.Vector2(v.x, v.y).sub(center);
             const size = 50.0;
-            const magnitude = 30;
+            const magnitude = 40;
             v.z = Math.sin(dist.length() / -size + (timeStamp / 500)) * magnitude;
         }
 

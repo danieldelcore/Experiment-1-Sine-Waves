@@ -7,7 +7,7 @@ node_modules
 ######################
 design
 designs
-# deploy
+deploy
 .tmp/
 
 # TMP BUILD FILES #

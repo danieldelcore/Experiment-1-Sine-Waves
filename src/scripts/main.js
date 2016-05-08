@@ -33,7 +33,7 @@ function initRenderer() {
 
 function initCamera() {
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10000);
-    camera.position.set(0, 100, 300);
+    camera.position.set(0, 500, 1000);
     camera.lookAt(scene.position);
 }
 
@@ -47,21 +47,8 @@ function initControls() {
 }
 
 function initLight() {
-    const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
-    light.position.set(-1, 1, -1);
-
-    const directionalLight = new THREE.DirectionalLight(0xF03861, 1);
-    directionalLight.position.set(0, 15, 0);
-
-    const pointLight = new THREE.PointLight(0xfca4c5, 1);
-    pointLight.position.set(0, 1000, 0);
-
     const hemisphereLight = new THREE.HemisphereLight(0x5F15FF, 0x42F58D, 1);
     hemisphereLight.position.set(-20, 20, 30);
-
-    // scene.add(light);
-    // scene.add(directionalLight);
-    // scene.add(pointLight);
     scene.add(hemisphereLight);
 }
 
