@@ -16,6 +16,7 @@ export default class Plane {
         this.config = {
             size: 50.0,
             magnitude: 40,
+            speed: 500,
         };
 
         this.mesh = new THREE.Mesh(geometry, material);
@@ -30,15 +31,16 @@ export default class Plane {
     initGui(gui) {
         const folder = gui.addFolder('Plane');
         folder.add(this.config, 'size', 10, 250);
+        folder.add(this.config, 'speed', 1, 1000);
         folder.add(this.config, 'magnitude', 10, 200);
     }
 
     update(timeStamp) {
         for (let i = 0; i < this.vCount; i++) {
-            const { size, magnitude } = this.config;
+            const { size, magnitude, speed } = this.config;
             const v = this.mesh.geometry.vertices[i];
             const dist = new THREE.Vector2(v.x, v.y).sub(this.vStart);
-            v.z = Math.sin(dist.length() / -size + (timeStamp / 500)) * magnitude;
+            v.z = Math.sin(dist.length() / -size + (timeStamp / speed)) * magnitude;
         }
 
         this.mesh.geometry.verticesNeedUpdate = true;
