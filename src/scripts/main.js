@@ -20,11 +20,11 @@ function initGui(main) {
         .onChange(c => main.hemisphereLight.color = new THREE.Color(c));
     folder.addColor(main.conf, 'hemisphereLightColor2')
         .onChange(c => main.hemisphereLight.groundColor = new THREE.Color(c));
-    folder.addColor(main.conf, 'hemisphereLightIntensity')
-        .onChange(c => main.hemisphereLight.intensity = new THREE.Color(c));
+    folder.add(main.conf, 'hemisphereLightIntensity', 0, 10)
+        .onChange(c => main.hemisphereLight.intensity = c);
     folder.addColor(main.conf, 'directionalLightColor')
         .onChange(c => main.directionalLight.color = new THREE.Color(c));
-    folder.add(main.conf, 'directionalLightIntensity')
+    folder.add(main.conf, 'directionalLightIntensity', 0, 10)
         .onChange(c => main.directionalLight.intensity = c);
 }
 
@@ -35,11 +35,6 @@ class Main {
             'onResize');
 
         this.conf = {
-            planeWidth: 4000,
-            planeHeight: 3000,
-            planeWidthSeg: 300,
-            planeHeightSeg: 300,
-            planeShininess: 30,
             hemisphereLightColor: 0x5F15FF,
             hemisphereLightColor2: 0x42F58D,
             hemisphereLightIntensity: 1,

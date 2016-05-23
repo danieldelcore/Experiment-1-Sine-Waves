@@ -2,6 +2,12 @@ const THREE = require('three');
 
 export default class Plane {
     constructor(gui) {
+        this.config = {
+            size: 50.0,
+            magnitude: 40,
+            speed: 500,
+        };
+
         const geometry = new THREE.PlaneGeometry(4000, 800, 300, 300);
         const material = new THREE.MeshPhongMaterial({
             color: 0xFFFFFF,
@@ -12,12 +18,6 @@ export default class Plane {
             side: THREE.DoubleSide,
             // wireframe: true,
         });
-
-        this.config = {
-            size: 50.0,
-            magnitude: 40,
-            speed: 500,
-        };
 
         this.mesh = new THREE.Mesh(geometry, material);
         this.mesh.rotation.x = -0.5 * Math.PI;
@@ -36,8 +36,9 @@ export default class Plane {
     }
 
     update(timeStamp) {
+        const { size, magnitude, speed } = this.config;
+
         for (let i = 0; i < this.vCount; i++) {
-            const { size, magnitude, speed } = this.config;
             const v = this.mesh.geometry.vertices[i];
             const dist = new THREE.Vector2(v.x, v.y).sub(this.vStart);
             v.z = Math.sin(dist.length() / -size + (timeStamp / speed)) * magnitude;
